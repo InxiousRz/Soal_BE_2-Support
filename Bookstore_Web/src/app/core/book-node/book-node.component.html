@@ -1,0 +1,40 @@
+<div style="width: 220px; float: left; margin: 0 15px 10px 10px; box-shadow: 3px 3px 5px 3px #ccc;">
+                
+    <div class="wide pointer-hover" (click)="openDetail()" style="height: 340px;">
+        <img [src]="book_data['Cover_URL']" class="wide" style="object-fit:fill; height: 330px; width: 220px; border: 1px solid rgb(204, 204, 204);">
+    </div>
+
+    <div class="udl-hover pointer-hover" style="color: #4361ee; font-weight: 600; margin: 10px 0 0 0; padding: 0 10px 0 10px;" (click)="openDetail()">
+        {{book_data['Title']}}
+    </div>
+
+    <div class="d-flex align-items-center" style="margin: 10px 0 10px 0; padding: 0 10px 0 10px;">
+
+            <div style="color: #ff7d00; font-size: 14pt; ">
+                {{ formatCurrencyReadable(book_data['Price']) }}
+            </div>
+
+    </div>
+
+    <div class="d-flex align-items-center" style="margin: 10px 0 10px 0; padding: 0 10px 0 10px;">
+
+        <div class="flex-grow-1">
+
+            <div style="font-size: 10pt; color: rgb(161, 161, 161);">
+                {{book_data['Stock']}} in stocks
+            </div>
+
+        </div>
+
+        <div class="d-flex flex-column">
+            <!-- <div class="flex-grow-1">
+                &nbsp;
+            </div> -->
+            <button *ngIf="book_data['Stock'] > 0;" type="button" class="btn btn-light btn-md mx-1 my-1" style="background-color: #ff7d00; color: #ffffff; font-size: 14pt;" (click)="openOrder()">Buy</button>
+            
+            <button *ngIf="book_data['Stock'] == 0;" type="button" class="btn btn-light btn-md mx-1 my-1" style="font-size: 14pt;" disabled >Out</button>
+        </div>
+
+    </div>
+
+</div>

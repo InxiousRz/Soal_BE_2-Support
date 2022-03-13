@@ -1,0 +1,47 @@
+<div class="d-flex flex-column justify-content-center align-items-center wide">
+
+    <div class="d-flex justify-content-end wide" style="padding: 5px; margin: 10px 0 0 0;">
+
+        <div class="d-flex" style="margin-right: 3vw;">
+            <div style="min-width: fit-content; margin: 5px 10px 5px 5px;">
+                Data Per Page : 
+            </div>  
+            
+            <select class="form-select" aria-label="Total Data Per Page" [(ngModel)]="data_per_page" name="data_per_page" (change)="selectDataPerPageHandler()">
+                <option selected value="5">5</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+            </select>
+        </div>
+
+    </div>
+
+    <div *ngIf="total_data > 0;" style="width: 90%; margin: 20px 0 40px 0;">
+        <ul>
+            <li style="display: inline-block;
+            margin: 0 16px 20px;
+            box-sizing: border-box;
+            vertical-align: top;
+            background: #fff;" *ngFor="let book_data of fetched_books; let i = index">
+                <app-book-node-seller [book_data]="book_data" (refresh_trigger)="refreshTriggerHandler($event)"></app-book-node-seller>
+            </li>
+        </ul>
+    </div>
+
+    <div *ngIf="total_data == 0;" style="width: 90%; margin: 100px 0 40px 0; text-align:center">
+        <div style="color: #333333; font-size: 24pt;">
+            You don't have any book to sell yet.<br>
+            You can start adding new book to sell now !
+        </div>
+    </div>
+
+    <div class="d-flex flex-column justify-content-center align-items-center wide" style="margin: 10px;">
+
+        <ngb-pagination *ngIf="total_data > 0;" [rotate]="true" [boundaryLinks]="true" [collectionSize]="total_data" [pageSize]="data_per_page" [(page)]="page" (pageChange)="pageHandler($event)" >
+            
+        </ngb-pagination>
+
+    </div>
+
+
+</div>

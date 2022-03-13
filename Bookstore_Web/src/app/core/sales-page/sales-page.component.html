@@ -1,0 +1,166 @@
+
+<app-side-bar *ngIf="show_sidenav == true;" (side_nav_event)="sideNavHandler($event)"></app-side-bar>
+
+<div class="d-flex flex-column align-items-center wide tall" style="background-color: #ffffff;">
+
+    <div class="d-flex align-items-center wide">
+
+        <div class="d-flex align-items-center flex-grow-1" style="height: 100px; margin: 10px 0 10px 0;">
+            <img src="assets/bookstore-icon.png" style="object-fit:contain; height: 100px; margin-left: 2.5vw; ">
+            <div style="margin-left: 10px; font-size: 38pt;">
+                Seller Center
+            </div>
+        </div>
+
+        <div *ngIf="checkLogin() == true;" class="d-flex align-items-center">
+            <div class="wide" style="text-align: right; margin: 0 40px 0 0; font-size: 20pt; color: #27AAAA;">
+                Welcome, {{user_data["Pen_Name"]}}
+            </div>
+        </div>
+
+    </div>
+
+    <div class="d-flex align-items-center wide" style="background-color: #17C3B2; padding: 10px 0 10px 0;">
+            
+        <div style="margin-left: 2.5vw;">
+            <button type="button" class="btn btn-light btn-md mx-1 my-1" style="" (click)="sideNavHandler(true)">Menu</button>
+        </div>
+
+        <form class="row flex-grow-1" style="margin-left: 40px;">
+            &nbsp;
+        </form>
+    
+        <div class="d-flex justify-content-center align-items-center" style="margin-right: 2.5vw;">
+            <button type="button" class="btn btn-danger btn-md mx-1 my-1" style="background-color: #FE6D73; color: #ffffff;" (click)="toAuthorProfile()">Profile</button>
+            <button type="button" class="btn btn-light btn-md mx-1 my-1" style="background-color: #ffffff; color: #000000;" (click)="logout()">Log Out</button>
+        </div>
+    </div>
+
+    <div class="d-flex flex-column justify-content-center align-items-center wide" style="padding: 20px 0 20px 0;">
+        
+        <div class="unl-title" style="width: 95%;">
+            Sales Filter
+        </div>
+        <div class="d-flex justify-content-center align-items-center" style="width: 95%; margin:20px 0 40px 0;">
+
+            <div class="d-flex flex-column justify-content-start align-items-center">
+                <form class="wide" style="padding: 20px;">
+                    <div class="form-group">
+                        <label for="exampleInputText">Book Title</label>
+                        <input type="text" [ngClass]="ngclass_title" id="exampleInputText" aria-describedby="titleHelp" placeholder="Enter Task Name" [(ngModel)]="book_title_search" name="search_title"> 
+                        <small *ngIf="(search_title_error == null)" id="titleHelp" class="form-text text-muted">
+                            Input a book title.
+                        </small>
+                        <div *ngIf="(search_title_error != null)" class="invalid-input-form">
+                            {{search_title_error}}
+                        </div>
+                        </div>
+                </form>
+                <div class="d-flex justify-content-center align-items-center">
+
+            
+                    <form style="padding: 20px;">
+                        <!-- SET DATE START -->
+                        <div class="form-group">
+                            <label for="exampleInputText1">Sales Created From</label>
+                            <div class="input-group">
+                                <input [ngClass]="ngclass_created_start" placeholder="dd-mm-yyyy"
+                                        name="d" #c="ngModel" [(ngModel)]="created_start_search" ngbDatepicker #d="ngbDatepicker" >
+                                <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button">
+                                    <img src="assets/calendar-ico.png" style="width: 20px; height:20px; object-fit: contain;">
+                                </button>
+                            </div>
+                            <small *ngIf="(search_date_start_error == null)" id="titlelHelp" class="form-text text-muted">
+                                Select date of sales to search from.
+                            </small>
+                            <div *ngIf="(search_date_start_error != null)" class="invalid-input-form">
+                                {{search_date_start_error}}
+                            </div>
+                        </div>
+                    </form>
+                    <form style="padding: 20px;">
+                        <!-- SET DATE END -->
+                        <div class="form-group">
+                            <label for="exampleInputText2">Sales Created Until</label>
+                            <div class="input-group">
+                                <input [ngClass]="ngclass_created_end" placeholder="dd-mm-yyyy"
+                                        name="d2" #c2="ngModel" [(ngModel)]="created_end_search" ngbDatepicker #d2="ngbDatepicker" >
+                                <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()" type="button">
+                                    <img src="assets/calendar-ico.png"  style="width: 20px; height:20px; object-fit: contain;">
+                                </button>
+                            </div>
+                            <small *ngIf="(search_date_end_error == null)" id="titlelHelp" class="form-text text-muted">
+                                Select date of sales to search until.
+                            </small>
+                            <div *ngIf="(search_date_end_error != null)" class="invalid-input-form">
+                                {{search_date_end_error}}
+                            </div>
+                        </div>
+                    </form>
+            
+                </div>
+            </div>
+            <div>
+                <div style="margin: 0 0 0 40px;">
+                    <button type="button" class="btn btn-light btn-md mx-1 my-1" style="padding:7px; width: 150px; background-color: #1a535c; font-size: 20pt; color: #FFFFFF;" (click)="applySearchFilter()">Search</button>
+                </div>
+            </div>
+
+        </div>
+        
+        
+        <div class="unl-title" style="width: 95%;">
+            Your Book Sales
+        </div>
+
+        <div *ngIf="search_filter != null;" style="width: 95%; margin: 10px 0 10px 0;">
+            # result for: {{search_filter}}
+        </div>
+
+        <div style="margin:20px 0 40px 0; width: 95%;">
+
+            <table class="table table-striped" style="">
+                <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Created At</th>
+                  <th scope="col">Book</th>
+                  <th scope="col">Buyer Name</th>
+                  <th scope="col">Recipient Email</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Price Per Unit</th>
+                  <th scope="col">Total Price</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let sale of sales; let i = index" class="sales-row">
+                  <th scope="row">{{ i + 1 + ((page-1) * data_per_page) }}</th>
+                  <td>
+                    {{ formatUnixReadable(sale["Created_Time"]) }}
+                  </td>
+                  <td>{{ sale["Book_Title"] }}</td>
+                  <td>{{ sale["Recipient_Name"] }}</td>
+                  <td>{{ sale["Recipient_Email"] }}</td>
+                  <td>{{ sale["Quantity"] }}</td>
+                  <td>{{ formatCurrencyReadable(sale["Price_Per_Unit"]) }}</td>
+                  <td>{{ formatCurrencyReadable(sale["Total_Price"]) }}</td>
+                </tr>
+                </tbody>
+              </table>
+              
+              <div class="d-flex justify-content-between p-2">
+                <ngb-pagination [rotate]="true" [boundaryLinks]="true" [collectionSize]="total_data" [pageSize]="data_per_page" [(page)]="page" (pageChange)="loadSales()">
+                </ngb-pagination>
+              
+                <select class="form-select" style="width: auto" [(ngModel)]="data_per_page" (ngModelChange)="loadSales()">
+                  <option [ngValue]="5">5 items per page</option>
+                  <option [ngValue]="10">10 items per page</option>
+                  <option [ngValue]="20">20 items per page</option>
+                </select>
+              </div>
+
+        </div>
+        
+    </div>
+
+</div>

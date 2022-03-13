@@ -1,0 +1,90 @@
+
+
+<div class="d-flex flex-column align-items-center wide tall">
+
+    <div class="d-flex align-items-center wide" style="height: 100px; margin-bottom: 10px;">
+        <img src="assets/bookstore-icon.png" style="object-fit:contain; height: 100px; margin-left: 2.5vw; ">
+        <div style="margin-left: 10px; font-size: 38pt;">
+            Bookstore
+        </div>
+    </div>
+
+    <div class="d-flex align-items-center wide" style="background-color: #17C3B2; padding: 10px 0 10px 0;">
+        &nbsp;
+    </div>
+
+    <div class="d-flex flex-column justify-content-center align-items-center wide" style="padding: 20px 0 20px 0;">
+        
+        <div class="unl-title-bg" style="width: 90%;">
+            Update your Book
+        </div>
+
+        <div class="d-flex justify-content-center wide" style="margin: 40px 0 40px 0;">
+
+            <div style="padding: 30px 40px 0 40px; text-align: center;">
+                <div style="color: #227C9D; font-size: 18pt; margin-bottom: 10px;">Book Cover</div>
+                <img [src]="cover_url" style="height: 330px; width:220px; object-fit:fill;">
+                <div class="wide" style="text-align: center; margin-top: 20px;">
+                    <button type="button" class="btn btn-light btn-lg mx-1 my-1" style="background-color: #EE964B; color: #ffffff; min-width: 200px;" (click)="openCoverUpdate()">Change Cover</button>
+                </div>
+            </div>
+    
+            <form style="width:70%; border-left: 1px solid #333333; padding: 0 0 0 40px;">
+
+                <div class="mb-3">
+                    <label for="exampleFormControlText1" class="col-form-label-lg">Book Title</label>
+                    <input type="text" [ngClass]="ngclass_title" id="exampleFormControlText1" placeholder="Book Title" aria-label="Recipient's username" aria-describedby="basic-addon1" name="textInputTitle" [(ngModel)]="title" required>
+                    <div *ngIf="ngclass_title['is-invalid'] == false;" id="basic-addon1" class="form-text">Input your book title</div>
+                    <div class="invalid-feedback">
+                        Please input a title for your book.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="col-form-label-lg">Book Summary</label>
+                    <textarea [ngClass]="ngclass_summary" id="exampleFormControlTextarea1" rows="10" placeholder="Book Summary" aria-label="Book Summary" aria-describedby="basic-addon2" name="textInputSummary" [(ngModel)]="summary" required></textarea>
+                    <div *ngIf="ngclass_summary['is-invalid'] == false;" id="basic-addon2" class="form-text">Input your book summary</div>
+                    <div class="invalid-feedback">
+                        Please input a summary for your book.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlTextCurr1" class="col-form-label-lg">Book Price</label>
+                    <div class="input-group">
+                        <span class="input-group-text">Rp.</span>
+                        <input type="number" [ngClass]="ngclass_price" id="exampleFormControlTextCurr1" aria-label="Book Price (dollar)" aria-describedby="basic-addon3" step="1" min="0" name="numberInputPrice" [(ngModel)]="price" required>
+                        <div class="invalid-feedback">
+                            Please input a price for your book. ( can't be 0 )
+                        </div>
+                    </div>
+                    <div *ngIf="ngclass_price['is-invalid'] == false;" id="basic-addon3" class="form-text">Input your selling price</div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlTextStock1" class="col-form-label-lg">Total Book To Sell (Stock)</label>
+                    <input type="number" [ngClass]="ngclass_stock" id="exampleFormControlTextStock1" aria-label="Book Stock" aria-describedby="basic-addon4" step="1" min="0" name="numberInputStock" [(ngModel)]="stock" required>
+                    <div *ngIf="ngclass_stock['is-invalid'] == false;" id="basic-addon4" class="form-text">Input the amount of books you want to sell</div>
+                    <div class="invalid-feedback">
+                        Please input stock number of your book.  ( can't be 0 )
+                    </div>
+                </div>
+
+                <!-- <div class="mb-3">
+                    <label for="formFile" class="col-form-label-lg">Book Cover</label>
+                    <input [ngClass]="ngclass_cover" type="file" id="formFile" accept=".jpg,.jpeg,.png" (change)="displayFile($event)">
+                    <div *ngIf="ngclass_cover['is-invalid'] == false;" id="basic-addon4" class="form-text">Upload the book cover image</div>
+                    <div class="invalid-feedback">
+                        Please choose a image cover for your book.
+                    </div>
+                </div> -->
+
+            </form>
+        </div>
+
+
+        <div class="wide" style="text-align: center; margin-top: 40px;">
+            <button type="button" class="btn btn-light btn-lg mx-1 my-1" style="background-color: #227C9D; color: #ffffff; min-width: 250px;" (click)="openUpdateConfirmationDialogue()">Update The Book</button>
+            <button type="button" class="btn btn-light btn-lg mx-1 my-1" style="background-color: #FE6D73; color: #ffffff; min-width: 250px;" (click)="cancelUpdate()">Cancel Update</button>
+        </div>
+        
+    </div>
+
+</div>

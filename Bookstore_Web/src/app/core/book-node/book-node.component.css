@@ -1,0 +1,26 @@
+
+
+.udl-hover {
+    text-decoration: none;
+}
+
+.udl-hover:hover {
+    text-decoration: underline;
+}
+
+
+.pointer-hover {
+    cursor: default;
+}
+
+.pointer-hover:hover {
+    cursor: pointer;
+}
+
+.cover-hover {
+    cursor: default;
+}
+
+.cover-hover:hover {
+    cursor: pointer;
+}

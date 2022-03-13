@@ -1,0 +1,64 @@
+<div>
+    <div class="modal-body" style="max-height: 75vh; overflow: auto;">
+
+        <div style="font-size: 28pt; margin: 10px 0 20px 0;">
+            Update Cover
+        </div>
+    
+        <div class="d-flex justify-content-center align-items-center wide" style="padding: 10px 0 40px 0; border-bottom: 1px solid #227C9D;">
+
+            <div style="width: 44%; text-align: center;">
+                <div class="wide" style="text-align: center; color: #227C9D; font-size: 18pt; margin-bottom: 10px;">
+                    Old Cover
+                </div>
+                <img [src]="cover_url" class="wide" style="object-fit:fill; border: 1px solid rgb(204, 204, 204); min-width: 350px; max-width: 350px; min-height: 500px; max-height: 500px;">
+            </div>
+
+            <div style="color: #227C9D; font-size: 18pt; margin: 10px; width: 14%; text-align: center;">
+                > >
+            </div>
+
+            <div style="width: 44%; text-align: center;">
+                <div class="wide" style="text-align: center; color: #227C9D; font-size: 18pt; margin-bottom: 10px;">
+                    New Cover
+                </div>
+                <img [src]="img_cover_source" class="wide" style="object-fit:fill; border: 1px solid rgb(204, 204, 204); min-width: 350px; max-width: 350px; min-height: 500px; max-height: 500px;">
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center wide" style="margin: 20px 0 20px 0;">
+
+            <form style="width: 90%;">
+                <div class="mb-3">
+                    <label for="formFile" class="col-form-label-lg">Book Cover</label>
+                    <input [ngClass]="ngclass_cover" type="file" id="formFile" accept=".jpg,.jpeg,.png" (change)="displayFile($event)">
+                    <div *ngIf="ngclass_cover['is-invalid'] == false;" id="basic-addon4" class="form-text">Upload the book cover image</div>
+                    <div class="invalid-feedback">
+                        Please choose a image cover for your book.
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        
+
+    </div>
+    <div class="model-footer">
+        <div class="d-flex justify-content-end wide">
+
+            <div class="d-flex justify-content-center align-items-end" style="margin: 10px;">
+    
+                <div>
+                    <button type="button" class="btn btn-light btn-lg mx-1 my-1" (click)="openUpdateConfirmationDialogue()" style="background-color: #227C9D; color: #ffffff; width: 150px;">Update</button>
+                </div>
+    
+                <div>
+                    <button type="button" class="btn btn-danger btn-lg mx-1 my-1" (click)="cancelUpdate()" style="background-color: #FE6D73; color: #ffffff; width: 150px;">Cancel</button>
+                </div>
+    
+            </div>
+
+        </div>
+    </div>
+
+</div>

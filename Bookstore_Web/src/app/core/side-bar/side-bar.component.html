@@ -1,0 +1,39 @@
+<div id="overlay-sidenav">
+
+    <div class="d-flex justify-content-center" style="height: 100%; width:100%">
+        <div id="sidenav" class="d-flex flex-column justify-content-center align-items-center wide">
+        
+            <div style="height: 100px; color: #2A9D8F; font-size: 24pt;" class="d-flex flex-column justify-content-center align-items-center wide">
+                Seller Menu
+            </div>
+    
+            <div class="wide" style="flex-grow: 1; margin-top: 60px;">
+    
+                <ul class="wide side-nav-menu">
+                    <li class="side-nav-menu-node" (click)="toDashboard()">
+                        Go To Store
+                    </li>
+                    <li class="side-nav-menu-node" (click)="toDashboardSeller()">
+                        Seller Center
+                    </li>
+                    <li class="side-nav-menu-node" (click)="hideSideNav()">
+                        Close
+                    </li>
+                </ul>
+    
+            </div>
+    
+            <!-- <div>
+                Todo list tria
+            </div> -->
+    
+        </div>
+    
+        <div id="dismiss-space" style="flex-grow: 1;" (click)="hideSideNav()">
+            &nbsp;
+        </div>
+    </div>
+
+    
+
+</div>

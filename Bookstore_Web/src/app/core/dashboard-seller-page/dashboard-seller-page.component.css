@@ -1,0 +1,38 @@
+
+
+.unl-title {
+    font-size: 18pt;
+    color: #227C9D;
+    border-bottom: 1px solid #227C9D;
+}
+
+#sell-new-book-btn {
+    background-color: #227C9D; 
+    padding: 20px 30px 20px 30px; 
+    width:fit-content; 
+    font-size: 28pt; 
+    font-weight:600; 
+    color: #FFFFFF; 
+    cursor: pointer;
+    border-radius: 9px;
+}
+
+#sell-new-book-btn:hover {
+    background-color: #35a0c7;
+}
+
+
+#sales-book-btn {
+    background-color: #F4A261; 
+    padding: 20px 30px 20px 30px; 
+    width:fit-content; 
+    font-size: 28pt; 
+    font-weight:600; 
+    color: #FFFFFF; 
+    cursor: pointer;
+    border-radius: 9px;
+}
+
+#sales-book-btn:hover {
+    background-color: #fab67e;
+}

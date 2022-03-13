@@ -1,0 +1,37 @@
+<div class="d-flex flex-column align-items-center" style="width: 220px;  float: left; margin: 0 15px 10px 10px; box-shadow: 3px 3px 5px 3px #ccc;">
+                
+    <div class="wide pointer-hover" (click)="openDetail()" style="height: 330px;">
+        <img [src]="book_data['Cover_URL']" class="wide" style="object-fit:fill; height: 330px; width: 220px; border: 1px solid rgb(204, 204, 204);">
+    </div>
+
+    <div class="udl-hover pointer-hover wide flex-grow-1" style="color: #4361ee; font-weight: 600; margin: 10px 0 0 0; padding: 0 10px 0 10px;" (click)="openDetail()">
+        {{book_data['Title']}}
+    </div>
+
+    <div class="d-flex flex-column align-items-center wide ">
+
+        <div class="wide" style="margin: 10px 0 10px 0; padding: 0 10px 0 10px; text-align: right;">
+
+            <div style="color: #ff7d00; font-size: 14pt; ">
+                {{ formatCurrencyReadable(book_data['Price']) }}
+            </div>
+
+        </div>
+
+        <div class="d-flex align-items-center" style="margin: 10px 0 0 0; padding: 0 10px 0 10px;">
+
+            <div class="flex-grow-1" style="text-align: center;">
+
+                <div style="font-size: 10pt; color: rgb(161, 161, 161); margin: 10px;">
+                    {{book_data['Stock']}} in stocks
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    
+
+</div>

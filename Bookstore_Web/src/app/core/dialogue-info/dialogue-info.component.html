@@ -1,0 +1,18 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-title">Notification</h4>
+    <button type="button" class="close" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body" style="overflow: auto; max-height: 70vh;">
+    <p><strong style="color: #000000;">What Happen : </strong></p>
+    
+    <div *ngIf="what_happen != '';" style="border: 1px solid #4e4e4e; background-color: #ffffff; color: rgb(0, 0, 0); font-size: 12pt; white-space: pre-wrap; padding: 10px; margin: 10px; word-wrap:break-word">
+        <p >
+            {{what_happen}}
+        </p>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="modal.close(true)">Ok</button>
+</div>

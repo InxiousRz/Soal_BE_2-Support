@@ -1,0 +1,73 @@
+
+<app-side-bar *ngIf="show_sidenav == true;" (side_nav_event)="sideNavHandler($event)"></app-side-bar>
+
+<div class="d-flex flex-column align-items-center wide tall" style="background-color: #ffffff;">
+
+    <div class="d-flex align-items-center wide">
+
+        <div class="d-flex align-items-center flex-grow-1" style="height: 100px; margin: 10px 0 10px 0;">
+            <img src="assets/bookstore-icon.png" style="object-fit:contain; height: 100px; margin-left: 2.5vw; ">
+            <div style="margin-left: 10px; font-size: 38pt;">
+                Seller Center
+            </div>
+        </div>
+
+        <div *ngIf="checkLogin() == true;" class="d-flex align-items-center">
+            <div class="wide" style="text-align: right; margin: 0 40px 0 0; font-size: 20pt; color: #27AAAA;">
+                Welcome, {{user_data["Pen_Name"]}}
+            </div>
+        </div>
+
+    </div>
+
+    <div class="d-flex align-items-center wide" style="background-color: #17C3B2; padding: 10px 0 10px 0;">
+            
+        <div style="margin-left: 2.5vw;">
+            <button type="button" class="btn btn-light btn-md mx-1 my-1" style="" (click)="sideNavHandler(true)">Menu</button>
+        </div>
+        <form class="row flex-grow-1" style="margin-left: 40px;">
+            <div class="col d-flex flex-column justify-content-center" style="min-width: 300px; width: 30%;">
+                <input type="text" class="form-control" id="exampleInputText1" placeholder="Search Your Book by Title" name="search_filter" [(ngModel)]="pending_search_filter">
+            </div>
+            <div class="col" style="">
+                <button type="button" class="btn btn-light btn-md mx-1 my-1" style="" (click)="applySearchFilter()">Search</button>
+            </div>
+        </form>
+    
+        <div class="d-flex justify-content-center align-items-center" style="margin-right: 2.5vw;">
+            <button type="button" class="btn btn-danger btn-md mx-1 my-1" style="background-color: #FE6D73; color: #ffffff;" (click)="toAuthorProfile()">Profile</button>
+            <button type="button" class="btn btn-light btn-md mx-1 my-1" style="background-color: #ffffff; color: #000000;" (click)="logout()">Log Out</button>
+        </div>
+    </div>
+
+    <div class="d-flex flex-column justify-content-center align-items-center wide" style="padding: 20px 0 20px 0;">
+        
+        <div class="unl-title" style="width: 95%;">
+            Seller Action
+        </div>
+        <div style="width: 95%; margin:20px 0 40px 0;">
+            <div id="sell-new-book-btn" style="margin: 10px 20px 0 0; float: left; " (click)="toAddBook()">
+                + Sell new Book
+            </div>
+            <div id="sales-book-btn" style="margin: 10px 20px 0 0; float: left; " (click)="toSales()">
+                + My Sales History
+            </div>
+        </div>
+        
+        <div class="unl-title" style="width: 95%;">
+            My Booklist
+        </div>
+
+        <div *ngIf="search_filter != null;" style="width: 95%; margin: 10px 0 10px 0;">
+            # result for: {{search_filter}}
+        </div>
+
+        <div class="wide" style="margin:20px 0 40px 0;">
+
+            <app-book-listview-seller [name_search]="search_filter"></app-book-listview-seller>
+
+        </div>
+        
+    </div>
+
+</div>

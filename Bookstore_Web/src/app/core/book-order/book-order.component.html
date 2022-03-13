@@ -1,0 +1,94 @@
+<div>
+    <div class="modal-body" style="max-height: 75vh; overflow: auto;">
+
+        <div style="font-size: 28pt; margin: 10px 0 20px 0;">
+            Order Confirmation
+        </div>
+    
+        <div class="d-flex justify-content-start wide">
+
+            <div>
+                <img [src]="book_data['Cover_URL']" class="wide" style="object-fit:fill; border: 1px solid rgb(204, 204, 204); min-width: 350px; max-width: 350px; min-height: 500px; max-height: 500px;">
+                
+            </div>
+
+            <div class="wide" style="margin: 0 0 20px 20px;">
+                <div style="margin: 0 0 20px 20px; ">
+                    
+                    <div style="font-size: 18pt; font-weight: 600;">
+                        <span style="color: #3f3f3f;">Buy : </span>
+                        <span style="color: #227C9D;">
+                            {{book_data['Title']}}
+                        </span>
+                    </div>
+                    
+        
+                    <div style="color: #ff7d00; font-size: 22pt;">
+                        {{ formatCurrencyReadable(book_data['Price']) }} <span style="color: #000000;">/ book</span>
+                    </div>
+
+                </div>
+
+                <form  style="margin-left: 20px; width: 80%;">
+
+                    <div class="mb-3">
+                        <label for="exampleFormControlText1" class="col-form-label-lg">Name</label>
+                        <input type="text" [ngClass]="ngclass_rec_name" id="exampleFormControlText1" placeholder="Your Name" aria-label="Recipient's Name" aria-describedby="basic-addon1" name="textInputTitle" [(ngModel)]="rec_name" required>
+                        <div *ngIf="ngclass_rec_name['is-invalid'] == false;" id="basic-addon1" class="form-text">Input your Name</div>
+                        <div class="invalid-feedback">
+                            Please input your name.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlText2" class="col-form-label-lg">Email</label>
+                        <input type="email" [ngClass]="ngclass_rec_email" id="exampleFormControlText2" placeholder="Your Email" aria-label="Recipient's Email" aria-describedby="basic-addon2" name="textInputEmail" [(ngModel)]="rec_email" required>
+                        <div *ngIf="ngclass_rec_email['is-invalid'] == false;" id="basic-addon2" class="form-text">Input your Email</div>
+                        <div class="invalid-feedback">
+                            Please input your valid email.
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextStock1" class="col-form-label-lg">Total Book To Buy</label>
+                        <div class="input-group mb-3">
+                            <input type="number" [ngClass]="ngclass_quantity" id="exampleFormControlTextStock1" aria-label="Book Stock" aria-describedby="basic-addon4" step="1" min="0" [max]="book_data['Stock']" placeholder="How Many to Buy" name="textInputQuantity" [(ngModel)]="quantity" required>
+                            <div class="input-group-append">
+                                <span class="input-group-text" id="basic-addon5">Max {{book_data['Stock']}}</span>
+                            </div>
+                            <div class="invalid-feedback">
+                                Please input how much book you want to buy. ( can't exceed {{book_data['Stock']}} )
+                            </div>
+                        </div>
+                        <div *ngIf="ngclass_quantity['is-invalid'] == false;" id="basic-addon4" class="form-text">Input the amount of books you want to buy</div>
+                    </div>
+    
+                </form>
+            </div>
+
+        </div>
+
+        <div class="d-flex flex-column justify-content-end align-items-end wide">
+
+            <div style="font-size: 22pt; margin: 10px 0 10px 0;">
+                Total Price : <strong style="color: #ff7d00;">{{getTotalPrice()}}</strong>
+            </div>
+
+            <div class="d-flex justify-content-center align-items-end">
+    
+                <div>
+                    <button *ngIf="book_data['Stock'] > 0;" type="button" class="btn btn-light btn-lg mx-1 my-1" (click)="openUpdateConfirmationDialogue()" style="background-color: #227C9D; color: #ffffff; width: 150px;">Order</button>
+                    
+                    <button *ngIf="book_data['Stock'] == 0;" type="button" class="btn btn-light btn-lg mx-1 my-1" (click)="openUpdateConfirmationDialogue()" style="width: 150px;" disabled>Out Of Stock</button>
+                </div>
+    
+                <div>
+                    <button type="button" class="btn btn-danger btn-lg mx-1 my-1" (click)="cancelOrder()" style="background-color: #FE6D73; color: #ffffff; width: 150px;">Cancel</button>
+                </div>
+    
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

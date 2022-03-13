@@ -1,0 +1,218 @@
+
+
+<div class="d-flex flex-column justify-content-center align-content-center wide tall" style="background-color: #264653;">
+
+    <!-- FORM -->
+    <div style="">
+
+
+        <!-- LOGIN FORM -->
+        <div *ngIf="selected_form == 1;" class="container" style="width: 600px; background-color: #FFFFFF; padding: 40px 15px 40px 15px;">
+        
+            <div class="d-flex justify-content-center" style="margin: 0 0 40px 0;">
+                <h1>
+                    Login Seller Panel
+                </h1>
+            </div>
+            
+            <div style="margin: 0 15px 20px 15px">
+
+                <form class="wide">
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="emailInputLogin" [(ngModel)]="email" placeholder="Your email"  autocomplete="user-email" id="user-email">
+                        <div id="emailHelp" class="form-text">Input your email</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" aria-describedby="passHelp" name="passwordInputLogin" [(ngModel)]="password" placeholder="Your password"  autocomplete="current-password" id="current-password"> 
+                        <div id="passHelp" class="form-text">Input your password</div>
+                    </div>
+                </form>
+
+            </div>
+
+            <div class="d-flex justify-content-center">
+
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                    <div style="margin: 0 0 10px 0;">
+                        <button type="button" class="btn btn-primary btn-lg mx-1 my-1" style="min-width: 200px; background-color: #2A9D8F;" (click)="login()">Sign In</button>
+                    </div>
+                    <div style="margin: 0 0 10px 0;">
+                        <button type="button" class="btn btn-light btn-lg mx-1 my-1" style="min-width: 200px; border: 1px solid #949494;" (click)="switchForm(2)">Register</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="d-flex justify-content-center forgotee" style="color: #1d70a2; font-size: 14pt;" (click)="switchForm(4);">
+                Forget your password ?
+            </div>
+
+            <div class="wide" style="text-align: center; margin: 60px 0 10px 0;">
+                <button type="button" class="btn btn-light btn-lg mx-1 my-1" style="min-width: 250px; background-color: #E3655B; color: #FFFFFF;" (click)="toDashboard()">Go As Customer</button>
+                <div>
+                    If you just want to buy a book
+                </div>
+            </div>
+        
+        </div>
+
+        <!-- REGISTER FORM -->
+        <div *ngIf="selected_form == 2;" class="container" style="width: 600px; background-color: #FFFFFF; padding: 40px 15px 40px 15px;">
+        
+            <div class="d-flex justify-content-center" style="margin: 0 0 40px 0;">
+                <h1>
+                    Register Seller Panel
+                </h1>
+            </div>
+            
+            <div style="margin: 0 15px 20px 15px">
+
+                <form class="wide">
+                    <div class="mb-3">
+                        <label for="exampleOriginalName" class="form-label">Original Name</label>
+                        <input type="text" class="form-control" id="exampleOriginalName" aria-describedby="oriNameHelp" placeholder="Your Name" name="nameInputRegister" [(ngModel)]="reg_name">
+                        <div id="oriNameHelp" class="form-text">Input your actual name</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="examplePenName" class="form-label">Pen Name</label>
+                        <input type="text" class="form-control" id="examplePenName" aria-describedby="penNameHelp" placeholder="Your Pen Name" name="penNameInputRegister" [(ngModel)]="reg_pen_name">
+                        <div id="penNameHelp" class="form-text">What you want to be called for your books</div>
+                        </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail2" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp2" placeholder="Your email" name="emailInputRegister" [(ngModel)]="reg_email" autocomplete="new-user-email" id="new-user-email">
+                        <div id="emailHelp2" class="form-text">Input your email</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" aria-describedby="passHelp2" placeholder="Your password" name="emailInputRegister" [(ngModel)]="reg_password" autocomplete="new-password" id="new-password">
+                        <div id="passHelp2" class="form-text">Input your password</div>
+                    </div>
+                </form>
+
+            </div>
+
+            <div class="d-flex justify-content-center">
+
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                    <button type="button" class="btn btn-primary btn-lg mx-1 my-1" style="min-width: 250px; background-color: #2A9D8F;" (click)="register()">Confirm Registration</button>
+                    <button type="button" class="btn btn-light btn-lg mx-1 my-1" style="min-width: 250px; border: 1px solid #949494" (click)="switchForm(1)">Already Have Account</button>
+                </div>
+
+            </div>
+        
+        </div>
+
+
+
+        <!-- REGISTER OK -->
+        <div *ngIf="selected_form == 3;" class="container" style="width: 600px; background-color: #FFFFFF; padding: 40px 15px 40px 15px;">
+        
+            <div class="d-flex justify-content-center" style="margin: 0 0 40px 0;">
+                <h1>
+                    Registration Success
+                </h1>
+            </div>
+            
+            <div class="wide d-flex flex-column align-items-center" style="">
+
+                <div style="margin: 20px 0 60px 0;">
+                    <img src="assets/checks.png" style="height: 150px; width:150px; object-fit:fill;">
+                </div>
+
+                <p style="width: 80%; text-indent: 40px; margin-bottom: 20px;">
+                    Congratulation, your account has been successfully created. Please proceed to Login.
+                </p>
+
+            </div>
+
+            <div class="d-flex justify-content-center" style="margin-top: 20px;">
+
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                    <button type="button" class="btn btn-primary btn-lg mx-1 my-1" style="min-width: 250px; background-color: #2A9D8F;" (click)="switchForm(1)">To Login</button>
+                </div>
+
+            </div>
+        
+        </div>
+
+
+        <!-- FORGOR PASSWORD FORM -->
+        <div *ngIf="selected_form == 4;" class="container" style="width: 600px; background-color: #FFFFFF; padding: 40px 15px 40px 15px;">
+        
+            <div class="d-flex justify-content-center" style="margin: 0 0 40px 0;">
+                <h1>
+                    Forgot Password Panel
+                </h1>
+            </div>
+            
+            <div style="margin: 0 15px 20px 15px">
+
+                <form class="wide">
+                    <div class="mb-3">
+                        <label for="exampleInputEmail4" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="exampleInputEmail4" aria-describedby="emailHelp4" placeholder="Your email" name="emailInputForgot" [(ngModel)]="forgot_email" autocomplete="new-user-email" id="new-user-email">
+                        <div id="emailHelp4" class="form-text">Input your email</div>
+                    </div>
+                </form>
+
+            </div>
+
+            <div class="d-flex justify-content-center">
+
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                    <button type="button" class="btn btn-primary btn-lg mx-1 my-1" style="min-width: 250px; background-color: #2A9D8F;" (click)="forgotPassword()">Reset Password</button>
+                    <button type="button" class="btn btn-light btn-lg mx-1 my-1" style="min-width: 250px; border: 1px solid #949494" (click)="switchForm(1)">Go Back To Login</button>
+                </div>
+
+            </div>
+        
+        </div>
+
+        <!-- REGISTER OK -->
+        <div *ngIf="selected_form == 5;" class="container" style="width: 600px; background-color: #FFFFFF; padding: 40px 15px 40px 15px;">
+        
+            <div class="d-flex justify-content-center" style="margin: 0 0 40px 0;">
+                <h1>
+                    Reset Password Success
+                </h1>
+            </div>
+            
+            <div class="wide d-flex flex-column align-items-center" style="">
+
+                <div style="margin: 20px 0 60px 0;">
+                    <img src="assets/checks.png" style="height: 70px; width:70px; object-fit:fill;">
+                </div>
+
+                <div class="wide" style="text-align: center;">
+                    <div style="font-size: 18pt; margin: 10px 0 30px 0;">
+                        Your New Password
+                    </div>
+                    <div class="d-flex align-items-center justify-content-center wide">
+                        <div style="background-color: #FFF7D1; font-weight: 600; font-size: 32pt; padding: 20px 0 20px 0; width: 80%;">
+                            {{new_password}}
+                        </div>
+                    </div>
+                </div>
+
+                <p style="width: 80%; text-indent: 40px; margin: 20px 0 10px 0;">
+                    Congratulation, your account password has been successfully reset. Dont forget to save this password so you dont forget and please proceed to Login.
+                </p>
+
+            </div>
+
+            <div class="d-flex justify-content-center" style="margin-top: 20px;">
+
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                    <button type="button" class="btn btn-primary btn-lg mx-1 my-1" style="min-width: 250px; background-color: #2A9D8F;" (click)="switchForm(1)">To Login</button>
+                </div>
+
+            </div>
+        
+        </div>
+
+    </div>
+
+</div>

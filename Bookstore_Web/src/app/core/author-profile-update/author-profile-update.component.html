@@ -1,0 +1,70 @@
+
+
+<div class="d-flex flex-column align-items-center wide tall">
+
+    <div class="d-flex align-items-center wide" style="height: 100px; margin-bottom: 10px;">
+        <img src="assets/bookstore-icon.png" style="object-fit:contain; height: 100px; margin-left: 2.5vw; ">
+        <div style="margin-left: 10px; font-size: 38pt;">
+            Bookstore
+        </div>
+    </div>
+
+    <div class="d-flex align-items-center wide" style="background-color: #17C3B2; padding: 10px 0 10px 0;">
+        &nbsp;
+    </div>
+
+    <div class="d-flex flex-column justify-content-center align-items-center wide" style="padding: 20px 0 20px 0;">
+        
+        <div class="unl-title-bg" style="width: 90%;">
+            Your Profile
+        </div>
+
+        <div style="width: 90%; text-align: right; margin: 10px 0 10px 0;">
+            <button type="button" class="btn btn-light btn-lg mx-1 my-1" style="background-color: #EE964B; color: #ffffff; min-width: 250px;" (click)="toChangePassword()">Change Password</button>
+            <button type="button" class="btn btn-light btn-lg mx-1 my-1" style="background-color: #E3655B; color: #ffffff; min-width: 250px;" (click)="openDisableConfirmationDialogue()">Disable Account</button>
+        </div>
+
+        <div class="d-flex justify-content-center wide" style="margin: 10px 0 10px 0;">
+
+            <form  style="width:90%; padding: 20px 0 40px 0;">
+
+                <div class="mb-3">
+                    <label for="exampleFormControlText1" class="col-form-label-lg">Original Name</label>
+                    <input type="text" [ngClass]="ngclass_name" id="exampleFormControlText1" placeholder="Name" aria-label="Author Name" aria-describedby="basic-addon1" name="textInputName" [(ngModel)]="name" required>
+                    <div *ngIf="ngclass_name['is-invalid'] == false;" id="basic-addon1" class="form-text">Input your actual name</div>
+                    <div class="invalid-feedback">
+                        Please input a name for your profile.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlText2" class="col-form-label-lg">Pen Name</label>
+                    <input type="text" [ngClass]="ngclass_pen_name" id="exampleFormControlText2" placeholder="Pen Name" aria-label="Author Pen Name" aria-describedby="basic-addon2" name="textInputPenName" [(ngModel)]="pen_name" required>
+                    <div *ngIf="ngclass_pen_name['is-invalid'] == false;" id="basic-addon1" class="form-text">What you want to be called for your books</div>
+                    <div class="invalid-feedback">
+                        Please input a pen name for your profile.
+                    </div>
+                </div>
+                <div class="mb-3 d-flex align-items-center">
+                    <div class="col-form-label-lg" style="margin: 0 20px 0 0;">
+                        Email : 
+                    </div>
+                    <div style="font-size: 18pt;">
+                        {{user_data['Email']}}
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+        
+    
+        <div class="wide" style="text-align: center; margin-top: 40px;">
+            <button type="button" class="btn btn-light btn-lg mx-1 my-1" style="background-color: #227C9D; color: #ffffff; min-width: 290px;" (click)="openUpdateConfirmationDialogue()">Update Profile</button>
+            <div style="margin: 10px 0 0 0;">
+                <button type="button" class="btn btn-light btn-lg mx-1 my-1" style="background-color: #5B8C5A; color: #ffffff; min-width: 290px;" (click)="cancelUpdate()">Go Back To Seller Center</button>
+            </div>
+        </div>
+        
+    </div>
+
+</div>
